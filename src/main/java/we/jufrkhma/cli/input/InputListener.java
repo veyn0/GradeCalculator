@@ -38,8 +38,13 @@ public class InputListener {
     }
 
     private void handleInput(String[] s){
-//        System.out.println(String.join(" ", s));
-        gradeCalculator.getCommandService().onCommand(s);
+        try {
+            gradeCalculator.getCommandService().onCommand(s);
+        }
+        catch (Exception e){
+            System.out.println("Exception occurred while handling command \"" + String.join(" ", s) + "\" :");
+            e.printStackTrace();
+        }
     }
 
     public void stop(){

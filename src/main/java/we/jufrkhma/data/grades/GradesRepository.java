@@ -47,8 +47,13 @@ public class GradesRepository {
         grades.put(grade.gradeId(), grade);
     }
 
+    public List<Grade> getGrades(){
+        return grades.values().stream().toList();
+    }
 
-
+    public void remove(UUID gradeId){
+        grades.remove(gradeId);
+    }
 
 
 }
