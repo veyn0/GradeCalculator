@@ -54,7 +54,7 @@ public class GradeCommand implements CommandExecutor {
         else if(action.equalsIgnoreCase("delete")){
             if(args.length==2){
                 try {
-                    Grade grade = gradeCalculator.getGradesRepository().getGrade(UUID.fromString(args[2]));
+                    Grade grade = gradeCalculator.getGradesRepository().getGrade(UUID.fromString(args[1]));
                     gradeCalculator.getGradesRepository().remove(grade.gradeId());
                     System.out.println("Removed");
                 } catch (Exception e){
@@ -64,12 +64,12 @@ public class GradeCommand implements CommandExecutor {
                 return;
             }
             if(args.length==3){
-                UserInfo userInfo = gradeCalculator.getUserRepository().getUserInfo(args[2]);
+                UserInfo userInfo = gradeCalculator.getUserRepository().getUserInfo(args[1]);
                 if(userInfo==null){
                     System.out.println("User not found");
                     return;
                 }
-                Subject subject = gradeCalculator.getSubjectRepository().getSubject(args[3]);
+                Subject subject = gradeCalculator.getSubjectRepository().getSubject(args[2]);
                 if(subject==null){
                     System.out.println("Subject not found");
                     return;

@@ -17,7 +17,7 @@ public class GradesRepository {
     public List<Grade> getGradesByUser(UUID userId){
         List<Grade> result = new ArrayList<>();
         for(Grade g : grades.values()){
-            if(g.userId()==userId) result. add(g);
+            if(g.userId().equals(userId)) result. add(g);
         }
         return result;
     }
@@ -25,7 +25,7 @@ public class GradesRepository {
     public List<Grade> getGradesBySubject(UUID subjectId){
         List<Grade> result = new ArrayList<>();
         for(Grade g : grades.values()){
-            if(g.subjectId()==subjectId) result. add(g);
+            if(g.subjectId().equals(subjectId)) result. add(g);
         }
         return result;
     }

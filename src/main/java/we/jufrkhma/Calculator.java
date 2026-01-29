@@ -28,12 +28,15 @@ public class Calculator {
         for (Grade g : grades){
             sum += g.grade();
         }
+        if(grades.isEmpty()) return 0;
         return  (double) sum / grades.size();
     }
 
     public int getAdjustedGrade(List<Grade> verbalGrades, List<Grade> nonVerbalGrades, float verbalGradeWeight){
         double verbalAvg = getAverage(verbalGrades) * verbalGradeWeight;
+        System.out.println("DEBUG: verbalavg: " + verbalAvg);
         double nonVerbalAvg = getAverage(nonVerbalGrades) * (1-verbalGradeWeight);
+        System.out.println("DEBUG: nonverbalavg: " + nonVerbalAvg);
         return (int) Math.round(nonVerbalAvg + verbalAvg);
     }
 }
