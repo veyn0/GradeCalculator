@@ -1,0 +1,34 @@
+name: Build and Test Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "24"
+          cache: maven
+
+      - name: Build shaded JAR
+        run: mvn -B package
+
+      - name: Create test release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: test-release-${{ github.run_number }}
+          name: Test Release ${{ github.run_number }}
+          prerelease: true
+          files: target/GradeCalculator.jar
