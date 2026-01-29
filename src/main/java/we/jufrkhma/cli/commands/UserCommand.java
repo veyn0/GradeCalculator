@@ -2,6 +2,7 @@ package we.jufrkhma.cli.commands;
 
 import we.jufrkhma.GradeCalculator;
 import we.jufrkhma.cli.input.CommandExecutor;
+import we.jufrkhma.data.subject.Subject;
 import we.jufrkhma.data.user.UserInfo;
 
 import java.util.Collection;
@@ -60,6 +61,19 @@ public class UserCommand implements CommandExecutor {
                 System.out.println();
             }
         }
+        else if (action.equalsIgnoreCase("remove")){
+            if(args.length!=2){
+                printInvalidArgs();
+                return;
+            }
+            UserInfo userInfo = gradeCalculator.getUserRepository().getUserInfo(args[1]);
+            if(userInfo==null){
+                System.out.println("User not found");
+                return;
+            }
+            gradeCalculator.getUserRepository().remove(userInfo.userId());
+            System.out.println("\"" + userInfo.name() + "\" removed");
+        }
     }
 
     private void printUserInfo(String user){
@@ -81,9 +95,10 @@ public class UserCommand implements CommandExecutor {
 
         System.out.println("""
                 user command info:
-                - create <name:String> : creates a user with the given Name
-                - list : lists all users currently saved
-                - info <userName:String> : prints the saved information of the specified user
+                - create <name:String>
+                - list
+                - info <userName/id>
+                - remove <subjectName/id>
                 """);
 
     }

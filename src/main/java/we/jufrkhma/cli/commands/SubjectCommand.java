@@ -69,7 +69,8 @@ public class SubjectCommand implements CommandExecutor {
                 System.out.println("Subject not found");
                 return;
             }
-            gradeCalculator.getSubjectRepository().
+            gradeCalculator.getSubjectRepository().remove(subject.subjectId());
+            System.out.println("\"" + subject.name() + "\" removed");
         }
 
     }

@@ -19,6 +19,7 @@ public class GradeCalculator {
 
     private CommandService commandService;
 
+    private Calculator calculator;
 
     private static GradeCalculator gradeCalculator = new GradeCalculator();
 
@@ -34,9 +35,11 @@ public class GradeCalculator {
         System.out.println("Starting GradeCalculator...");
         commandService = new CommandService();
         inputListener = new InputListener(this);
-        userRepository = new UserRepository();
+        userRepository = new UserRepository(this);
         subjectRepository = new SubjectRepository();
         gradesRepository = new GradesRepository(this);
+        calculator = new Calculator();
+
 
         initCommands();
         System.out.println("GradeCalculator started.");
@@ -55,6 +58,7 @@ public class GradeCalculator {
         commandService.registerCommand("user", new UserCommand(this));
         commandService.registerCommand("subject", new SubjectCommand(this));
         commandService.registerCommand("grade", new GradeCommand(this));
+        commandService.registerCommand("calc", new CalcCommand(this));
     }
 
     public CommandService getCommandService() {
@@ -71,5 +75,9 @@ public class GradeCalculator {
 
     public UserRepository getUserRepository() {
         return userRepository;
+    }
+
+    public Calculator getCalculator() {
+        return calculator;
     }
 }
