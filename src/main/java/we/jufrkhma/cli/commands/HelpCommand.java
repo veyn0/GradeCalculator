@@ -23,8 +23,6 @@ public class HelpCommand implements CommandExecutor {
                     - user
                     - subject
                     - grade
-                    
-                    Planned:
                     - calc
                     
                     
