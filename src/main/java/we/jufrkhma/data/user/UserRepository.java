@@ -31,4 +31,8 @@ public class UserRepository {
     public Map<UUID, UserInfo> getUserData() {
         return userData;
     }
+
+    public void remove(UUID userId){
+        userData.remove(userId);
+    }
 }

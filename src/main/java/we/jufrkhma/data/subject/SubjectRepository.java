@@ -31,4 +31,8 @@ public class SubjectRepository {
     public Map<UUID, Subject> getSubjects() {
         return subjects;
     }
+
+    public void remove(UUID subjectId){
+        subjects.remove(subjectId);
+    }
 }

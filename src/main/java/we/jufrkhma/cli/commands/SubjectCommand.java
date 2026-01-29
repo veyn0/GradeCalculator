@@ -59,6 +59,18 @@ public class SubjectCommand implements CommandExecutor {
                 System.out.println();
             }
         }
+        else if (action.equalsIgnoreCase("remove")){
+            if(args.length!=2){
+                printInvalidArgs();
+                return;
+            }
+            Subject subject = gradeCalculator.getSubjectRepository().getSubject(args[1]);
+            if(subject==null){
+                System.out.println("Subject not found");
+                return;
+            }
+            gradeCalculator.getSubjectRepository().
+        }
 
     }
 
@@ -85,6 +97,7 @@ public class SubjectCommand implements CommandExecutor {
                 - list : list all saved subjects
                 - info <subjectName:String> : list info about specific saved subject
                 - create <name:String> <verbalGradeWeight:float> : create Subject with specified parameters
+                - remove <subjectName/id>
                 """);
     }
     
