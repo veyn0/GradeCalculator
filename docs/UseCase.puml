@@ -1,0 +1,68 @@
+@startuml
+left to right direction
+
+actor "CLI-Benutzer" as A
+
+rectangle "GradeCalculator (CLI)" {
+
+  (Hilfe anzeigen) as UC_Help
+  (Programm beenden) as UC_Stop
+
+  (Benutzer erstellen) as UC_UserCreate
+  (Benutzer auflisten) as UC_UserList
+  (Benutzerinfo anzeigen) as UC_UserInfo
+  (Benutzer löschen) as UC_UserRemove
+
+  (Fach erstellen) as UC_SubjCreate
+  (Fächer auflisten) as UC_SubjList
+  (Fachinfo anzeigen) as UC_SubjInfo
+  (Fach löschen) as UC_SubjRemove
+
+  (Note erfassen) as UC_GradeCreate
+  (Noten eines Benutzers anzeigen) as UC_GradesViewUser
+  (Noten eines Benutzers in einem Fach löschen) as UC_GradesDeleteUserSubject
+
+  (Durchschnitt berechnen) as UC_Calc
+  (Gesamtdurchschnitt eines Benutzers berechnen) as UC_CalcTotal
+  (Fachdurchschnitt eines Benutzers berechnen) as UC_CalcSubject
+}
+
+A --> UC_Help
+A --> UC_Stop
+
+A --> UC_UserCreate
+A --> UC_UserList
+A --> UC_UserInfo
+A --> UC_UserRemove
+
+A --> UC_SubjCreate
+A --> UC_SubjList
+A --> UC_SubjInfo
+A --> UC_SubjRemove
+
+A --> UC_GradeCreate
+A --> UC_GradesViewUser
+A --> UC_GradesDeleteUserSubject
+
+A --> UC_CalcTotal
+A --> UC_CalcSubject
+
+UC_Calc <|-- UC_CalcTotal
+UC_Calc <|-- UC_CalcSubject
+
+note right of UC_GradesViewUser
+  Vorbedingung: Benutzer existiert
+end note
+
+note right of UC_GradesDeleteUserSubject
+  Vorbedingung: Benutzer und Fach existieren
+end note
+
+note right of UC_CalcTotal
+  Vorbedingung: Benutzer existiert
+end note
+
+note right of UC_CalcSubject
+  Vorbedingung: Benutzer und Fach existieren
+end note
+@enduml
