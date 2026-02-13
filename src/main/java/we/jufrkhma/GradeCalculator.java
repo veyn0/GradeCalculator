@@ -21,15 +21,15 @@ public class GradeCalculator {
 
     private Calculator calculator;
 
-    private static GradeCalculator gradeCalculator = new GradeCalculator();
+//    private static GradeCalculator gradeCalculator = new GradeCalculator();
 
-    private GradeCalculator(){
+//    private GradeCalculator(){
+//
+//    }
 
-    }
-
-    public static GradeCalculator getGradeCalculator() {
-        return gradeCalculator;
-    }
+//    public static GradeCalculator getGradeCalculator() {
+//        return gradeCalculator;
+//    }
 
     public void onStartup(){
         System.out.println("Starting GradeCalculator...");
